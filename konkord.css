@@ -28,7 +28,12 @@ body{
 
 .name-and-description{
     color: aliceblue;
-    margin-top: 18%;
+    margin-top: 8%;
+}
+
+.slogan{
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
 }
 
 .main-links{
