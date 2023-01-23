@@ -1,0 +1,85 @@
+
+/* Шапка сайта */
+body{
+    margin: 6% 7%;
+    background-color: #1f1f1f;
+    border: 0.3rem solid;
+    border-color: aliceblue;
+    border-radius: 5px;
+}
+
+#head-block{
+    background-color: black;
+    border: 35px;
+    border-color: antiquewhite;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.7rem;
+
+}
+
+.first-block{
+    margin-bottom: 6% ;
+}
+
+.head-image{
+    width: 90%;
+    height: 100%;
+}
+
+.name-and-description{
+    color: aliceblue;
+    margin-top: 18%;
+}
+
+.main-links{
+    padding: 2%;
+}
+
+.main-sections{
+    color: antiquewhite;
+    font-family: 'Tenor Sans', sans-serif;
+}
+
+.main-sections:hover{
+    color: gold;
+}
+
+/* Средний блок */
+
+#middle-block{
+    background-color: white;
+    padding-top: 7%;
+
+}
+
+.two-sections{
+    margin-bottom: 7%;
+}
+
+.image-sections{
+    width: 60%;
+    height: 250px;
+    margin: auto;
+    padding-bottom: 5%;
+}
+
+.links-sections{
+    font-family: 'JetBrains Mono', monospace;
+    color: black;
+}
+
+.links-sections:hover{
+    color: gold;
+}
+
+/* Нижний контейнер */
+
+#bottom-cntnr{
+    background-color: black;
+    color: beige;
+    padding: 6%;
+}
+
+
+
+
