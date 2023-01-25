@@ -33,7 +33,10 @@ body{
 
 .slogan{
     font-family: 'Pacifico', cursive;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 20%;
+    color: beige;
+    text-shadow: gold 0 0 4px;
 }
 
 .main-links{
@@ -85,6 +88,14 @@ body{
     padding: 6%;
 }
 
+@media (min-width:1028px){
+    .image-sections{
+        width: 60%;
+        height: 270px;
+        margin: auto;
+        padding-bottom: 5%;
+    }
+}
 
 
 
