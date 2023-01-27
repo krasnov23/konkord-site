@@ -1,19 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Конкорд - Производство Наружной рекламы в Москве и Одинцово{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <!-- bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <!-- Подключение иконок -->
+        <script src="https://kit.fontawesome.com/43124feaf5.js" crossorigin="anonymous"></script>
+        <!-- Гугл Фонтс -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@1,700&family=Tenor+Sans&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            <link href="{{ asset('css/konkord.css') }}" rel="stylesheet"/>
         {% endblock %}
-
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
+    <section id="head-block">
+        <div class="container-fluid">
+            <div class="row first-block">
+                <div class="col-lg-2 col-md-2 col-sm-0">
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-5">
+                    <img class="head-image" src="../public/images/MainPageIMG/Head4.JPG" alt="head-picture">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-7 name-and-description text-md-center text-sm-center">
+                    <h1 class="mb-3">КОНКОРД</h1>
+                    <h5 class="mb-5">Производство наружной рекламы в Одинцово и Москве</h5>
+                    <h6 class="slogan">Творчество со стратегией </h6>
+                    <h4 class=""><i class="fa-brands fa-whatsapp fa-1x"></i>8(916)338-04-22</h6>
+                    <h4 class="mt-3">8(901)735-83-99</h6>
+                </div>
+            </div>
+            <div class="row text-lg-center text-md-center text-sm-center">
+                <div class="col-lg-3 col-md-4 col-sm-6 main-links">
+                    <h6><a class="main-sections" href="">Наружная реклама / Вывески</a></h6>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 main-links">
+                    <h6><a class="main-sections" href="">Брендирование Авто</a></h6>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 main-links">
+                    <h6><a class="main-sections" href="">  Полиграфия</a></h6>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6 main-links">
+                    <h6><a class="main-sections" href="">Наш Адрес и Контакты</a></h6>
+                </div>
+                <div class="col-lg-3 col-md-6 main-links">
+                    <h6><a class="main-sections" href="">Расчет Заказа / Обратная связь</a></h6>
+                </div>
+            </div>
+        </div>
+    </section>
         {% block body %}{% endblock %}
+    <section id="bottom-cntnr">
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-lg-6 col-md-6">
+                    <h2>Производственная компания </h2>
+                    <h4>Конкорд © 2023</h4>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <h3>Телефон 8(916)338-04-22</h3>
+                    <h5>konkord-reklama@mail.ru</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>
