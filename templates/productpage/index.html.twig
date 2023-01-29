@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <section id="product-content">
+        <div class="container-fluid text-center mx-auto">
+            <h1 class="mb-5">{{ product.title }}</h1>
+            <h3 class="mb-5">{{ product.subtitle1 }} </h3>
+            <img class="product-image pb-5" src="{{ asset('images/MainPageIMG/' ~ product.photo1) }}" alt="Symfony!"/>
+            <p class="product-description">{{ product.description1 }}</p>
+        </div>
+    </section>
+{% endblock %}

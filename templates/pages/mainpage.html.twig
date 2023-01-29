@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <section id="middle-block">
+        <div class="container-fluid">
+            <div class="row mx-auto text-center">
+                {% for product in products %}
+                <div class="col-lg-6 col-md-6 ">
+                    <img class="image-sections" src="images/MainPageIMG/{{ product.photo1 }}" alt="">
+                    <h5><a class="links-sections" href="{{ path('app_product_page',{ product:product.id}) }}">{{ product.title }}</a></h5>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
