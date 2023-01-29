@@ -57,7 +57,11 @@ body{
 #middle-block{
     background-color: white;
     padding-top: 7%;
-    padding-bottom: 7% ;
+
+}
+
+.two-sections{
+    margin-bottom: 7%;
 }
 
 .image-sections{
@@ -84,9 +88,26 @@ body{
     padding: 6%;
 }
 
-.sf-toolbar-clearer{
-    background-color: black;
+
+/* Блок контента */
+
+#product-content{
+    background-color: white;
+    color: black;
+    font-family: 'Tenor Sans', sans-serif;
+    padding: 10% 10%;
 }
+
+.product-image{
+    width: 100%;
+}
+
+.product-description{
+    padding-left: 7%;
+    padding-right: 7%;
+    font-size: 1.3rem;
+}
+
 
 @media (min-width:1028px){
     .image-sections{
@@ -95,7 +116,30 @@ body{
         margin: auto;
         padding-bottom: 5%;
     }
+
 }
+
+@media (max-width:1028px) {
+
+    #product-content{
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+
+    .product-image{
+        width: 100%;
+        height: 350px;
+    }
+
+    .product-description{
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+
 
 
 
