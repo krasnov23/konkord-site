@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Добавление продукта {% endblock %}
+
+{% block body %}
+    <section id="product-content">
+    <div class="container-fluid text-center mx-auto">
+
+        {{ form_start(form) }}
+
+        <div> {{ form_errors(form) }} </div>
+
+        {# Название продукта #}
+        <div>
+            {{ form_label(form.title,'Введите главное название продукта') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.title) }}
+        </div>
+
+
+        <div class="mb-5">
+            {{ form_label(form.mainPagePhoto) }}
+            {{ form_widget(form.mainPagePhoto) }}
+        </div>
+
+        {# Подназвание продукта 1 #}
+        <div>
+            {{ form_label(form.subtitle1,'Подназвание первого продукта') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.subtitle1) }}
+        </div>
+
+        {# Описание продукта 1 #}
+
+        <div>
+            {{ form_label(form.description1,'Описание первого продукта') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.description1) }}
+        </div>
+
+        {# Фото первого продукта #}
+        <div>
+            {{ form_label(form.photo1,'Фото первого продукта') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.photo1) }}
+        </div>
+
+
+        {# Подназвание продукта 2 #}
+        <div>
+            {{ form_label(form.subtitle2,'Подназвание второго продукта') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.subtitle2) }}
+        </div>
+
+        {# Описание продукта 2 #}
+
+        <div>
+            {{ form_label(form.description2,'Описание второго продукта') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.description2) }}
+        </div>
+
+        {# Фото второго продукта #}
+        <div>
+            {{ form_label(form.photo2,'Фото второго продукта') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.photo2) }}
+        </div>
+
+        {# Подназвание продукта 3 #}
+        <div>
+            {{ form_label(form.subtitle3,'Подназвание третьего продукта') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.subtitle3) }}
+        </div>
+
+        {# Описание продукта 3 #}
+
+        <div>
+            {{ form_label(form.description3,'Описание третьего продукта') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.description3) }}
+        </div>
+
+        {# Фото третьего продукта #}
+        <div>
+            {{ form_label(form.photo3,'Фото третьего продукта') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.photo3) }}
+        </div>
+
+
+        <div>
+            {{ form_row(form.submit, { 'label': 'Создать карточку' }) }}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+    </section>
+
+{% endblock %}

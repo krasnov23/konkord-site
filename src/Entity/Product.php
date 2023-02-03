@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
@@ -17,6 +18,11 @@ class Product
     private ?string $title = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+//    #[Assert\File(
+//        maxSize: '1024k',
+//        mimeTypes: ['image/jpeg','image/png'],
+//        mimeTypesMessage: 'Please upload a valid PDF',
+//    )]
     private ?string $mainPagePhoto = null;
 
     #[ORM\Column(length: 255, nullable: true)]

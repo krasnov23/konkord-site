@@ -1,13 +1,20 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Конкорд - {{ product.title }}{% endblock %}
 
 {% block body %}
     <section id="product-content">
         <div class="container-fluid text-center mx-auto">
             <h1 class="mb-5">{{ product.title }}</h1>
             <h3 class="mb-5">{{ product.subtitle1 }} </h3>
-            <img class="product-image pb-5" src="{{ asset('images/MainPageIMG/' ~ product.photo1) }}" alt="Symfony!"/>
-            <p class="product-description">{{ product.description1 }}</p>
+            <img class="product-image pb-5" src="{{ asset('images/productPage/' ~ product.photo1) }}" alt="Symfony!"/>
+            <p class="product-description mb-5">{{ product.description1 }}</p>
+            <h3 class="mb-5 mt-5">{{ product.subtitle2 }} </h3>
+            <img class="product-image pb-5" src="{{ asset('images/productPage/' ~ product.photo2) }}" alt="Symfony!"/>
+            <p class="product-description mb-5">{{ product.description2 }}</p>
+            <h3 class="mb-5 mt-5">{{ product.subtitle3 }} </h3>
+            <img class="product-image pb-5" src="{{ asset('images/productPage/' ~ product.photo3) }}" alt="Symfony!"/>
+            <p class="product-description">{{ product.description3 }}</p>
         </div>
     </section>
 {% endblock %}
