@@ -15,7 +15,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProductPageController extends AbstractController
 {
-    private array $photos = ['mainPagePhoto','photo1','photo2','photo3'];
+    public array $photos = ['mainPagePhoto','photo1','photo2','photo3'];
 
     #[Route('/', name: 'app_main_page')]
     public function index(ProductRepository $products): Response

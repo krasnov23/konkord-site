@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Страница входа в аккаунт{% endblock %}
+
+{% block body %}
+    <section id="product-content">
+        <h1 class="mb-5">Вход в аккаунт</h1>
+
+        <form action="{{ path('app_login') }}" method="POST">
+            <div class="mb-3">
+                <label for="" class="form-label">Почтовый адрес</label>
+                <input type="text" name="_username" class="form-control" value="{{ lastUserName }}">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Пароль</label>
+                <input type="password" class="form-control" name="_password" />
+            </div>
+
+            <input type="hidden" name="_target_path" value="{{ path('app_main_page') }}">
+
+            <button type="submit" class="btn btn-lg btn-dark">Войти в аккаунт</button>
+        </form>
+    </section>
+{% endblock %}
