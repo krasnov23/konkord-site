@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FeedbackController!{% endblock %}
+
+{% block body %}
+    <section id="product-content">
+    <div class="container-fluid text-center mx-auto">
+
+        {{ form_start(form) }}
+
+        <div> {{ form_errors(form) }} </div>
+
+        <div>
+            {{ form_label(form.clientName,'Ваше имя') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.clientName) }}
+        </div>
+
+        <div>
+            {{ form_label(form.communicationData,'Ваш номер телефона или почта') }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.communicationData) }}
+        </div>
+
+        <div>
+            {{ form_label(form.description,'Что вас интересует') }}
+        </div>
+
+        <div class="mb-5 ">
+            {{ form_widget(form.description) }}
+        </div>
+
+        <div>
+            {{ form_label(form.photo) }}
+        </div>
+
+        <div class="mb-5">
+            {{ form_widget(form.photo) }}
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-lg btn-dark">Отправить</button>
+        </div>
+
+        {{ form_end(form) }}
+
+    </div>
+    </section>
+{% endblock %}

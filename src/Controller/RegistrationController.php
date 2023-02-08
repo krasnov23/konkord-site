@@ -47,7 +47,7 @@ class RegistrationController extends AbstractController
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
-                    ->from("b7169752@gmail.com")
+                    ->from("krasnovb88@gmail.com")
                     // new Address('auth@site-konkord.com', 'Konkord Auth System')
                     ->to($user->getEmail())
                     ->subject('Please Confirm your Email')

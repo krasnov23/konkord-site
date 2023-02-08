@@ -14,14 +14,18 @@
                 <div class="col-lg-6 col-md-6 d-grid gap-2 mt-5 mb-5">
                     <img class="image-sections" src="images/MainPageIMG/{{ product.mainPagePhoto }}" alt="">
                     <h5><a class="links-sections" href="{{ path('app_product_page',{ product:product.id}) }}">{{ product.title }}</a></h5>
+                    {% if is_granted('ROLE_MODERATOR') %}
                     <a href="{{ path('app_product_page_edit', {product:product.id}) }}" class="btn btn-dark w-50 mx-auto">Редактировать пост</a>
                     <a href="{{ path('app_product_page_delete', {product:product.id}) }}" class="btn btn-dark w-50 mx-auto">Удалить пост</a>
+                    {% endif %}
                 </div>
                 {% endfor %}
+                {% if is_granted('ROLE_MODERATOR') %}
                 <hr>
                 <div class="d-grid gap-2 col-4 mx-auto mb-5 mt-5">
                     <a href="{{ path('app_product_page_add') }}" class="btn btn-lg btn-outline-dark">Добавить новый товар</a>
                 </div>
+                {% endif %}
             </div>
         </div>
     </section>

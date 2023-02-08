@@ -48,17 +48,26 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 main-links">
                     <h6><a class="main-sections" href="{{ path('app_main_page') }}">На Главную</a></h6>
                 </div>
+                {% if app.user %}
+                <div class="col-lg-2 col-md-4 col-sm-6 main-links">
+                    <h6><a class="main-sections" href="{{ path('app_register') }}">Регистрация нового аккаунта</a></h6>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 main-links">
+                    <h6><a class="main-sections" href="{{ path('app_logout') }}">  Выход из аккаунт</a></h6>
+                </div>
+                {% else %}
                 <div class="col-lg-2 col-md-4 col-sm-6 main-links">
                     <h6><a class="main-sections" href="{{ path('app_register') }}">Регистрация</a></h6>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6 main-links">
                     <h6><a class="main-sections" href="{{ path('app_login') }}">  Вход в аккаунт</a></h6>
                 </div>
+                {% endif %}
                 <div class="col-lg-2 col-md-6 col-sm-6 main-links">
                     <h6><a class="main-sections" href="">Наш Адрес и Контакты</a></h6>
                 </div>
                 <div class="col-lg-3 col-md-6 main-links">
-                    <h6><a class="main-sections" href="">Расчет Заказа / Обратная связь</a></h6>
+                    <h6><a class="main-sections" href="{{ path('app_feedback') }}">Расчет Заказа / Обратная связь</a></h6>
                 </div>
             </div>
         </div>

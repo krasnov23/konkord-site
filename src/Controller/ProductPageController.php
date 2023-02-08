@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,7 +36,9 @@ class ProductPageController extends AbstractController
         ]);
     }
 
+
     #[Route('/products/add', name: 'app_product_page_add',priority: 2)]
+    #[IsGranted('ROLE_MODERATOR')]
     public function productPageAdd(ProductRepository $products,Request $request,SluggerInterface $slugger): Response
     {
 
@@ -111,6 +114,7 @@ class ProductPageController extends AbstractController
     }
 
     #[Route('/products/{product}/edit', name: 'app_product_page_edit')]
+    #[IsGranted('ROLE_MODERATOR')]
     public function productPageEdit(Product $product,ProductRepository $products,Request $request,SluggerInterface $slugger): Response
     {
 
@@ -186,6 +190,7 @@ class ProductPageController extends AbstractController
     }
 
     #[Route('/products/{product}/delete', name: 'app_product_page_delete')]
+    #[IsGranted('ROLE_MODERATOR')]
     public function productPageDelete(Product $product,ProductRepository $products,Request $request): Response
     {
 

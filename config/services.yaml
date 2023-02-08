@@ -6,6 +6,7 @@
 parameters:
     mains_images_directory: '%kernel.project_dir%/public/images/MainPageIMG'
     page_images_directory: '%kernel.project_dir%/public/images/productPage'
+    feedback_images_directory: '%kernel.project_dir%/public/images/feedback_Images'
 
 services:
     # default configuration for services in *this* file
