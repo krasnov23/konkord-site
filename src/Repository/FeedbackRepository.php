@@ -39,6 +39,15 @@ class FeedbackRepository extends ServiceEntityRepository
         }
     }
 
+    public function orderByDate(): array
+    {
+
+        return $this->createQueryBuilder('f')
+            ->orderBy('f.date','DESC')
+            ->getQuery()->getResult();
+
+    }
+
 //    /**
 //     * @return Feedback[] Returns an array of Feedback objects
 //     */

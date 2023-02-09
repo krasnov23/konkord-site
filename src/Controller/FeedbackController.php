@@ -6,6 +6,7 @@ use App\Entity\Feedback;
 use App\Form\FeedbackType;
 use App\Repository\FeedbackRepository;
 use DateTime;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,11 +19,13 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class FeedbackController extends AbstractController
 {
 
+
     #[Route('/show-feedbacks', name: 'app_feedbacks', priority: 2)]
+    #[IsGranted('ROLE_ADMIN')]
     public function allFeedbacks(FeedbackRepository $feedBacks): Response
     {
         return $this->render('feedback/all-feedbacks.html.twig',[
-            'feedbacks' => $feedBacks->findAll()
+            'feedbacks' => $feedBacks->orderByDate()
         ]);
     }
 
