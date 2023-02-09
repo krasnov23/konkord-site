@@ -22,8 +22,13 @@
                 {% endfor %}
                 {% if is_granted('ROLE_MODERATOR') %}
                 <hr>
-                <div class="d-grid gap-2 col-4 mx-auto mb-5 mt-5">
+                <div class="d-grid gap-2 mx-auto mb-3 mt-3 w-75">
                     <a href="{{ path('app_product_page_add') }}" class="btn btn-lg btn-outline-dark">Добавить новый товар</a>
+                </div>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <div class="d-grid gap-2 mx-auto mb-5 w-75">
+                    <a href="{{ path('app_feedbacks') }}" class="btn btn-lg btn-outline-dark">Посмотреть заказы</a>
                 </div>
                 {% endif %}
             </div>

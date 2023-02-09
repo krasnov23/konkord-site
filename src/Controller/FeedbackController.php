@@ -22,7 +22,7 @@ class FeedbackController extends AbstractController
     public function allFeedbacks(FeedbackRepository $feedBacks): Response
     {
         return $this->render('feedback/all-feedbacks.html.twig',[
-            'feedbacks' => $feedBacks
+            'feedbacks' => $feedBacks->findAll()
         ]);
     }
 
