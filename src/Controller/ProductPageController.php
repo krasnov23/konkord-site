@@ -18,7 +18,7 @@ class ProductPageController extends AbstractController
 {
     public array $photos = ['mainPagePhoto','photo1','photo2','photo3'];
 
-    // Главная страницааа
+    
     #[Route('/', name: 'app_main_page')]
     public function index(ProductRepository $products): Response
     {
