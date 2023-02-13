@@ -83,26 +83,13 @@ class FeedbackController extends AbstractController
 
             $this->addFlash('success','Ваш заявка была отправлена, мы свяжемся с вами в ближайшее время');
 
-            return $this->redirectToRoute('app_feedback');
+            return $this->redirectToRoute('app_main_page');
 
         }
 
         return $this->render('feedback/index.html.twig', [
             'form' => $form->createView(),
         ]);
-    }
-
-
-    #[Route('/feedback/{feedback}/delete', name: 'app_feedback_delete', priority: 2)]
-    #[IsGranted('ROLE_ADMIN')]
-    public function delete(Feedback $feedback,FeedbackRepository $feedBacks): Response
-    {
-        $feedBacks->remove($feedback,true);
-
-        $this->addFlash('success','Отзыв был удален');
-
-        return $this->redirectToRoute('app_feedbacks');
-
     }
 
 
