@@ -61,6 +61,7 @@ class ProductPageController extends AbstractController
                 if ($oneOfImage)
                 {
 
+                    dd($_FILES);
                     // Создание клиента который будет помогать наш грузить наши файлы +
                     // проверяет AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY из env
                     $s3 = new S3Client([
