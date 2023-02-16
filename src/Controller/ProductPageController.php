@@ -61,7 +61,6 @@ class ProductPageController extends AbstractController
                 if ($oneOfImage)
                 {
 
-                    dd($_FILES);
                     // Создание клиента который будет помогать наш грузить наши файлы +
                     // проверяет AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY из env
                     $s3 = new S3Client([
@@ -80,6 +79,8 @@ class ProductPageController extends AbstractController
 
                     // Добавление уникального айди и расширения например JPG
                     $newFileName = $safeFilename . '-' . uniqid() . '.' . $oneOfImage->guessExtension() ;
+
+                    dd($_FILES);
 
                     $filePath = __DIR__ . '/' . $newFileName;
 
