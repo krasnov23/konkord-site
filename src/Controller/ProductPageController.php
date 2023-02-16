@@ -80,7 +80,7 @@ class ProductPageController extends AbstractController
                     // Добавление уникального айди и расширения например JPG
                     $newFileName = $safeFilename . '-' . uniqid() . '.' . $oneOfImage->guessExtension() ;
 
-                    $filePath = __DIR__ . $newFileName;
+                    $filePath = __DIR__ . '/' . $newFileName;
 
 
                     try{
