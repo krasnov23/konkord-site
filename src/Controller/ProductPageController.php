@@ -87,13 +87,11 @@ class ProductPageController extends AbstractController
                         $upload = $s3->putObject([
                             'Bucket' => $bucket,
                             'Key'    => $newFileName,
-                            'Body'   => fopen($filePath,'r'),
+                            'SourceFile'   => $filePath,
                             'ACL'    => 'public-read'
                         ]);
 
-                        $uploadURL = $upload->get('ObjectURL');
-
-                        dd($uploadURL);
+                        dd($upload);
                     }catch (S3Exception $e){
                         echo $e->getMessage();
                     }
