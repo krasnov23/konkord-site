@@ -6,6 +6,8 @@ use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 
+use Aws\S3\Exception\S3Exception;
+use Aws\S3\S3Client;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -58,6 +60,17 @@ class ProductPageController extends AbstractController
 
                 if ($oneOfImage)
                 {
+
+                    // Создание клиента который будет помогать наш грузить наши файлы +
+                    // проверяет AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY из env
+                    $s3 = new S3Client([
+                        'version'  => 'latest',
+                        'region'   => 'us-east-1',
+                    ]);
+
+                    // Получает значение корзины куда будет выгружен файл
+                    $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
+
                     // Получение оригинального имени (только конечного названия)
                     $originalNameImage = pathinfo($oneOfImage->getClientOriginalName(),PATHINFO_FILENAME);
 
@@ -67,36 +80,52 @@ class ProductPageController extends AbstractController
                     // Добавление уникального айди и расширения например JPG
                     $newFileName = $safeFilename . '-' . uniqid() . '.' . $oneOfImage->guessExtension() ;
 
-                    if ($photo === 'mainPagePhoto')
-                    {
-                        $imageDirectory = 'mains_images_directory';
-                    }else{
-                        $imageDirectory = 'page_images_directory';
+                    try{
+                        $upload = $s3->putObject([
+                            'Bucket' => $bucket,
+                            'Key'    => $newFileName,
+                            'Body'   => 'Hello, world!',
+                            'ACL'    => 'public-read'
+                        ]);
+
+                        $uploadURL = $upload['ObjectURL'];
+                        dd($uploadURL);
+                    }catch (S3Exception $e){
+                        echo $e->getMessage();
                     }
+
+
+
+//                    if ($photo === 'mainPagePhoto')
+//                    {
+//                        $imageDirectory = 'mains_images_directory';
+//                    }else{
+//                        $imageDirectory = 'page_images_directory';
+//                    }
 
                     // Сохранение фото в папку
-                    try{
-                        $oneOfImage->move(
-                            // Указанный в скобках параметр это директория куда будет отправляться загруженная картинка
-                            // находится указанный в скобках ключ в services.yaml
-                            $this->getParameter($imageDirectory),
-                            $newFileName
-                        );
-                    } catch (FileException $e){
-
-                    }
+//                    try{
+//                        $oneOfImage->move(
+//                            // Указанный в скобках параметр это директория куда будет отправляться загруженная картинка
+//                            // находится указанный в скобках ключ в services.yaml
+//                            $this->getParameter($imageDirectory),
+//                            $newFileName
+//                        );
+//                    } catch (FileException $e){
+//
+//                    }
 
                     if ($photo === 'mainPagePhoto')
                     {
-                        $product->setMainPagePhoto($newFileName);
+                        $product->setMainPagePhoto($uploadURL);
                     }elseif ($photo === 'photo1')
                     {
-                        $product->setPhoto1($newFileName);
+                        $product->setPhoto1($uploadURL);
                     }elseif ($photo === 'photo2')
                     {
-                        $product->setPhoto2($newFileName);
+                        $product->setPhoto2($uploadURL);
                     }elseif ($photo === 'photo3'){
-                        $product->setPhoto3($newFileName);
+                        $product->setPhoto3($uploadURL);
                     }
 
                 }
