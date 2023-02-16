@@ -91,7 +91,7 @@ class ProductPageController extends AbstractController
                             'ACL'    => 'public-read'
                         ]);
 
-                        $uploadURL = $upload['ObjectURL'];
+                        $uploadURL = $upload->get('ObjectURL');
 
                         dd($uploadURL);
                     }catch (S3Exception $e){
