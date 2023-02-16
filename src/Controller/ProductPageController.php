@@ -82,13 +82,11 @@ class ProductPageController extends AbstractController
 
                     $filePath = __DIR__ . $newFileName;
 
-                    dd($filePath);
 
                     try{
                         $upload = $s3->putObject([
                             'Bucket' => $bucket,
                             'Key'    => $newFileName,
-                            'Body'   => fopen($filePath,'r'),
                             'ACL'    => 'public-read'
                         ]);
 
