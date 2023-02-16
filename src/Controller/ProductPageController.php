@@ -91,14 +91,11 @@ class ProductPageController extends AbstractController
                             'ACL'    => 'public-read'
                         ]);
 
-                        //fopen($filePath,'r')
+                        //$imageNameAfterUpload = $filePath["ObjectURL"]['']
 
-                        dd($upload);
                     }catch (S3Exception $e){
                         echo $e->getMessage();
                     }
-
-
 
 //                    if ($photo === 'mainPagePhoto')
 //                    {
@@ -121,15 +118,15 @@ class ProductPageController extends AbstractController
 
                     if ($photo === 'mainPagePhoto')
                     {
-                        $product->setMainPagePhoto($uploadURL);
+                        $product->setMainPagePhoto($newFileName);
                     }elseif ($photo === 'photo1')
                     {
-                        $product->setPhoto1($uploadURL);
+                        $product->setPhoto1($newFileName);
                     }elseif ($photo === 'photo2')
                     {
-                        $product->setPhoto2($uploadURL);
+                        $product->setPhoto2($newFileName);
                     }elseif ($photo === 'photo3'){
-                        $product->setPhoto3($uploadURL);
+                        $product->setPhoto3($newFileName);
                     }
 
                 }
@@ -141,6 +138,7 @@ class ProductPageController extends AbstractController
 
             return $this->redirectToRoute('app_main_page');
         }
+
 
         return $this->render('pages/add-product.html.twig', [
             'form' => $form->createView()
