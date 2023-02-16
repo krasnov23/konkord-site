@@ -87,7 +87,7 @@ class ProductPageController extends AbstractController
                         $upload = $s3->putObject([
                             'Bucket' => $bucket,
                             'Key'    => $newFileName,
-                            'SourceFile'   => $newFileName,
+                            'SourceFile'   => fopen($filePath,'r'),
                             'ACL'    => 'public-read'
                         ]);
 
