@@ -80,22 +80,20 @@ class ProductPageController extends AbstractController
                     // Добавление уникального айди и расширения например JPG
                     $newFileName = $safeFilename . '-' . uniqid() . '.' . $oneOfImage->guessExtension() ;
 
-                    dd($_FILES);
 
-                    $filePath = __DIR__ . '/' . $newFileName;
-
+                    $filePath = $_FILES['product']['tmp_name'][$photo];
 
                     try{
                         $upload = $s3->putObject([
                             'Bucket' => $bucket,
                             'Key'    => $newFileName,
-                            'SourceFile'   => fopen($filePath,'r'),
+                            'SourceFile'   => $filePath,
                             'ACL'    => 'public-read'
                         ]);
 
-                        $uploadURL = $upload['ObjectURL'];
+                        //fopen($filePath,'r')
 
-                        dd($uploadURL);
+                        dd($upload);
                     }catch (S3Exception $e){
                         echo $e->getMessage();
                     }
