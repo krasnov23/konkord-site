@@ -90,7 +90,7 @@ class ProductPageController extends AbstractController
                             'ACL'    => 'public-read'
                         ]);
 
-                        dd($upload);
+                        dd($_FILES['image']['tmp_name']);
                     }catch (S3Exception $e){
                         echo $e->getMessage();
                     }
