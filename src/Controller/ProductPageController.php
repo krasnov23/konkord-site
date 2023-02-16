@@ -69,7 +69,7 @@ class ProductPageController extends AbstractController
                     ]);
 
                     // Получает значение корзины куда будет выгружен файл
-                    $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
+                    $bucket = getenv('S3_BUCKET_NAME')?: die('No "S3_BUCKET" config var in found in env!');
 
                     // Получение оригинального имени (только конечного названия)
                     $originalNameImage = pathinfo($oneOfImage->getClientOriginalName(),PATHINFO_FILENAME);
