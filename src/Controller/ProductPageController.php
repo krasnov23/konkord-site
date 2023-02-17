@@ -164,6 +164,15 @@ class ProductPageController extends AbstractController
 
                 if ($oneOfImage)
                 {
+
+                    $s3 = new S3Client([
+                        'version'  => 'latest',
+                        'region'   => 'us-east-1',
+                    ]);
+
+                    // Получает значение корзины куда будет выгружен файл
+                    $bucket = getenv('S3_BUCKET_NAME')?: die('No "S3_BUCKET" config var in found in env!');
+
                     // Получение оригинального имени (только конечного названия)
                     $originalNameImage = pathinfo($oneOfImage->getClientOriginalName(),PATHINFO_FILENAME);
 
@@ -173,23 +182,21 @@ class ProductPageController extends AbstractController
                     // Добавление уникального айди и расширения например JPG
                     $newFileName = $safeFilename . '-' . uniqid() . '.' . $oneOfImage->guessExtension() ;
 
-                    if ($photo === 'mainPagePhoto')
-                    {
-                        $imageDirectory = 'mains_images_directory';
-                    }else{
-                        $imageDirectory = 'page_images_directory';
-                    }
+                    // Переменную filepath я получил введя команду dd($_FILES)
+                    $filePath = $_FILES['product']['tmp_name'][$photo];
 
-                    // Сохранение фото в папку
                     try{
-                        $oneOfImage->move(
-                        // Указанный в скобках параметр это директория куда будет отправляться загруженная картинка
-                        // находится указанный в скобках ключ в services.yaml
-                            $this->getParameter($imageDirectory),
-                            $newFileName
-                        );
-                    } catch (FileException $e){
+                        $upload = $s3->putObject([
+                            'Bucket' => $bucket,
+                            'Key'    => $newFileName,
+                            'SourceFile'   => $filePath,
+                            'ACL'    => 'public-read'
+                        ]);
 
+                        //$imageNameAfterUpload = $filePath["ObjectURL"]['']
+
+                    }catch (S3Exception $e){
+                        echo $e->getMessage();
                     }
 
                     if ($photo === 'mainPagePhoto')
@@ -210,7 +217,6 @@ class ProductPageController extends AbstractController
 
             $product = $form->getData();
             $products->save($product,true);
-
             $this->addFlash('success','Ваш продукт был отредактирован');
 
             return $this->redirectToRoute('app_main_page');
