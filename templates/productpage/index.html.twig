@@ -7,13 +7,19 @@
         <div class="container-fluid text-center mx-auto">
             <h1 class="mb-5">{{ product.title }}</h1>
             <h3 class="mb-5">{{ product.subtitle1 }} </h3>
+            {% if product.photo1 %}
             <img class="product-image pb-5" src="https://konkord-moscow.s3.amazonaws.com/{{ product.photo1 }}" alt="Symfony!"/>
+            {% endif %}
             <p class="product-description mb-5">{{ product.description1 }}</p>
             <h3 class="mb-5 mt-5">{{ product.subtitle2 }} </h3>
+            {% if product.photo2 %}
             <img class="product-image pb-5" src="https://konkord-moscow.s3.amazonaws.com/{{ product.photo2 }}" alt="Symfony!"/>
+            {% endif %}
             <p class="product-description mb-5">{{ product.description2 }}</p>
             <h3 class="mb-5 mt-5">{{ product.subtitle3 }} </h3>
+            {% if product.photo3 %}
             <img class="product-image pb-5" src="https://konkord-moscow.s3.amazonaws.com/{{ product.photo3 }}" alt="Symfony!"/>
+            {% endif %}
             <p class="product-description">{{ product.description3 }}</p>
         </div>
     </section>

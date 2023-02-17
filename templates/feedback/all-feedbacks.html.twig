@@ -8,7 +8,7 @@
             <div class="container-fluid text-center mx-auto mb-3 mt-2">
                 <h2 class="mb-2">{{ feedback.clientName }}</h2>
                 <h5 class="mb-4">{{ feedback.communicationData }}</h5>
-                <img class="product-image pb-5 w-50" src="{{ asset('images/feedback_images/' ~ feedback.photo) }}" alt="Symfony!"/>
+                <img class="product-image pb-5 w-50" src="https://konkord-moscow.s3.amazonaws.com/{{ feedback. }}" alt="Symfony!"/>
                 <p >{{ feedback.description }}</p>
                 <p class="mb-5">{{ feedback.date|format_datetime() }}</p>
                 <hr class="mb-5">

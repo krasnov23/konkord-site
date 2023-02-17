@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Feedback;
 use App\Form\FeedbackType;
 use App\Repository\FeedbackRepository;
+use Aws\S3\Exception\S3Exception;
+use Aws\S3\S3Client;
 use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -56,11 +58,35 @@ class FeedbackController extends AbstractController
                 // Добавление уникального айди и расширения например JPG
                 $newFileName = $safeFilename . '-' . uniqid() . '.' . $feedBackImage->guessExtension();
 
-                try{
-                    $feedBackImage->move($this->getParameter('feedback_images_directory'),$newFileName);
-                }catch (FileException $e){
+                $s3 = new S3Client([
+                    'version'  => 'latest',
+                    'region'   => 'us-east-1',
+                ]);
 
+                // Получает значение корзины куда будет выгружен файл
+                $bucket = getenv('S3_BUCKET_NAME')?: die('No "S3_BUCKET" config var in found in env!');
+                
+                // Переменную filepath я получил введя команду dd($_FILES)
+                $filePath = $_FILES['feedback']['tmp_name']['photo'];
+
+                try{
+                    $upload = $s3->putObject([
+                        'Bucket' => $bucket,
+                        'Key'    => $newFileName,
+                        'SourceFile'   => $filePath,
+                        'ACL'    => 'public-read'
+                    ]);
+
+
+                }catch (S3Exception $e){
+                    echo $e->getMessage();
                 }
+
+//                try{
+//                    $feedBackImage->move($this->getParameter('feedback_images_directory'),$newFileName);
+//                }catch (FileException $e){
+//
+//                }
 
                 $feedBack->setPhoto($newFileName);
             }
