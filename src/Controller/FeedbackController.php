@@ -65,7 +65,7 @@ class FeedbackController extends AbstractController
 
                 // Получает значение корзины куда будет выгружен файл
                 $bucket = getenv('S3_BUCKET_NAME')?: die('No "S3_BUCKET" config var in found in env!');
-                
+
                 // Переменную filepath я получил введя команду dd($_FILES)
                 $filePath = $_FILES['feedback']['tmp_name']['photo'];
 
